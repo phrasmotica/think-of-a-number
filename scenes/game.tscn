@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bf1jcgnoh4v45"]
+[gd_scene load_steps=5 format=3 uid="uid://bf1jcgnoh4v45"]
 
 [ext_resource type="PackedScene" uid="uid://m5dffj8my3kp" path="res://scenes/game_manager.tscn" id="1_0tytt"]
 [ext_resource type="PackedScene" uid="uid://gksavxrlke4t" path="res://scenes/answer_panel.tscn" id="1_jftse"]
 [ext_resource type="PackedScene" uid="uid://nir80wbam710" path="res://scenes/progress_panel.tscn" id="3_ewt4v"]
+[ext_resource type="PackedScene" uid="uid://mk230kyxlcmn" path="res://scenes/reveal_panel.tscn" id="4_tv6jw"]
 
 [node name="Game" type="Node2D"]
 
@@ -38,6 +39,18 @@ theme_override_constants/margin_right = 20
 [node name="ProgressPanel" parent="CanvasLayer/CenterContainer2/MarginContainer" instance=ExtResource("3_ewt4v")]
 layout_mode = 2
 
+[node name="CenterContainer3" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -156.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RevealPanel" parent="CanvasLayer/CenterContainer3" instance=ExtResource("4_tv6jw")]
+layout_mode = 2
+
 [connection signal="accept_guess" from="GameManager" to="CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" method="_on_game_manager_accept_guess"]
 [connection signal="accept_guess" from="GameManager" to="CanvasLayer/CenterContainer2/MarginContainer/ProgressPanel" method="_on_game_manager_accept_guess"]
+[connection signal="game_won" from="GameManager" to="CanvasLayer/CenterContainer3/RevealPanel" method="_on_game_manager_game_won"]
 [connection signal="submit_answer" from="CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" to="GameManager" method="_on_answer_panel_submit_answer"]
