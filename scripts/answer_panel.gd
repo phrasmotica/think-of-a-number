@@ -40,7 +40,7 @@ func _on_answer_input_text_submitted(new_text: String):
 func _on_submit_button_pressed():
 	submit_from_text(answer_input.text)
 
-func _on_game_manager_accept_guess(_guess: int):
+func _on_game_manager_accept_guess(_guess: int, _secret: int):
 	answer_input.text = ""
 
 func _on_game_manager_game_started(_secret: int):

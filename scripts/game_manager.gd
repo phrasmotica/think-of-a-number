@@ -3,7 +3,7 @@ extends Node
 var secret_number: int
 
 signal game_started(secret: int)
-signal accept_guess(guess: int)
+signal accept_guess(guess: int, secret: int)
 signal game_won
 
 func _ready():
@@ -24,7 +24,7 @@ func submit_guess(guess: int):
     else:
         print("Try again.")
 
-    accept_guess.emit(guess)
+    accept_guess.emit(guess, secret_number)
 
 func _on_answer_panel_submit_answer(guess: int):
     submit_guess(guess)
