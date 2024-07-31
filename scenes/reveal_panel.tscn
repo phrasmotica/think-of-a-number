@@ -22,7 +22,8 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer"]
+[node name="SecretLabel" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"RevealLabel"
 text = "85"

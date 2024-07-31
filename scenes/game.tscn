@@ -9,9 +9,9 @@
 
 [node name="GameManager" parent="." instance=ExtResource("1_0tytt")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="GameManager"]
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+[node name="CenterContainer" type="CenterContainer" parent="GameManager/CanvasLayer"]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -19,27 +19,27 @@ offset_top = -122.0
 offset_right = 1152.0
 grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GameManager/CanvasLayer/CenterContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="AnswerPanel" parent="CanvasLayer/CenterContainer/MarginContainer" instance=ExtResource("1_jftse")]
+[node name="AnswerPanel" parent="GameManager/CanvasLayer/CenterContainer/MarginContainer" instance=ExtResource("1_jftse")]
 layout_mode = 2
 
-[node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer"]
+[node name="CenterContainer2" type="CenterContainer" parent="GameManager/CanvasLayer"]
 offset_right = 260.0
 offset_bottom = 648.0
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/CenterContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="GameManager/CanvasLayer/CenterContainer2"]
 layout_mode = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_right = 20
 
-[node name="ProgressPanel" parent="CanvasLayer/CenterContainer2/MarginContainer" instance=ExtResource("3_ewt4v")]
+[node name="ProgressPanel" parent="GameManager/CanvasLayer/CenterContainer2/MarginContainer" instance=ExtResource("3_ewt4v")]
 layout_mode = 2
 
-[node name="CenterContainer3" type="CenterContainer" parent="CanvasLayer"]
+[node name="CenterContainer3" type="CenterContainer" parent="GameManager/CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -47,10 +47,14 @@ offset_bottom = -156.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RevealPanel" parent="CanvasLayer/CenterContainer3" instance=ExtResource("4_tv6jw")]
+[node name="RevealPanel" parent="GameManager/CanvasLayer/CenterContainer3" instance=ExtResource("4_tv6jw")]
 layout_mode = 2
 
-[connection signal="accept_guess" from="GameManager" to="CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" method="_on_game_manager_accept_guess"]
-[connection signal="accept_guess" from="GameManager" to="CanvasLayer/CenterContainer2/MarginContainer/ProgressPanel" method="_on_game_manager_accept_guess"]
-[connection signal="game_won" from="GameManager" to="CanvasLayer/CenterContainer3/RevealPanel" method="_on_game_manager_game_won"]
-[connection signal="submit_answer" from="CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" to="GameManager" method="_on_answer_panel_submit_answer"]
+[connection signal="accept_guess" from="GameManager" to="GameManager/CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" method="_on_game_manager_accept_guess"]
+[connection signal="accept_guess" from="GameManager" to="GameManager/CanvasLayer/CenterContainer2/MarginContainer/ProgressPanel" method="_on_game_manager_accept_guess"]
+[connection signal="game_started" from="GameManager" to="GameManager/CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" method="_on_game_manager_game_started"]
+[connection signal="game_started" from="GameManager" to="GameManager/CanvasLayer/CenterContainer3/RevealPanel" method="_on_game_manager_game_started"]
+[connection signal="game_won" from="GameManager" to="GameManager/CanvasLayer/CenterContainer3/RevealPanel" method="_on_game_manager_game_won"]
+[connection signal="submit_answer" from="GameManager/CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" to="GameManager" method="_on_answer_panel_submit_answer"]
+[connection signal="game_restarted" from="GameManager/CanvasLayer/CenterContainer3/RevealPanel" to="GameManager" method="_on_reveal_panel_game_restarted"]
+[connection signal="game_restarted" from="GameManager/CanvasLayer/CenterContainer3/RevealPanel" to="GameManager/CanvasLayer/CenterContainer2/MarginContainer/ProgressPanel" method="_on_reveal_panel_game_restarted"]
