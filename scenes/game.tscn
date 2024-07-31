@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bf1jcgnoh4v45"]
+[gd_scene load_steps=3 format=3 uid="uid://bf1jcgnoh4v45"]
 
+[ext_resource type="PackedScene" uid="uid://m5dffj8my3kp" path="res://scenes/game_manager.tscn" id="1_0tytt"]
 [ext_resource type="PackedScene" uid="uid://gksavxrlke4t" path="res://scenes/answer_panel.tscn" id="1_jftse"]
 
 [node name="Game" type="Node2D"]
+
+[node name="GameManager" parent="." instance=ExtResource("1_0tytt")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -21,3 +24,5 @@ theme_override_constants/margin_bottom = 20
 
 [node name="AnswerPanel" parent="CanvasLayer/CenterContainer/MarginContainer" instance=ExtResource("1_jftse")]
 layout_mode = 2
+
+[connection signal="submit_answer" from="CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" to="GameManager" method="_on_answer_panel_submit_answer"]
