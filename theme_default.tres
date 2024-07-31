@@ -1,0 +1,17 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://skah0wjpgann"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pj2a5"]
+bg_color = Color(0.7833, 0.487455, 0.68921, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[resource]
+Button/font_sizes/font_size = 24
+LineEdit/font_sizes/font_size = 24
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_pj2a5")
