@@ -22,8 +22,9 @@ func _ready():
 				print("Input text is not a valid integer!")
 	)
 
-	answer_input.grab_focus()
+	gain_input()
 
+	# because answer input is empty by default
 	submit_button.disabled = true
 
 func submit_from_text(text: String):
@@ -33,6 +34,18 @@ func submit_from_text(text: String):
 
 	var answer := int(text)
 	submit_answer.emit(answer)
+
+func prevent_input():
+	answer_input.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	answer_input.release_focus()
+
+	submit_button.disabled = true
+
+func gain_input():
+	answer_input.mouse_filter = Control.MOUSE_FILTER_STOP
+	answer_input.grab_focus()
+
+	submit_button.disabled = false
 
 func _on_answer_input_text_submitted(new_text: String):
 	submit_from_text(new_text)
@@ -45,3 +58,6 @@ func _on_game_manager_accept_guess(_guess: int, _secret: int):
 
 func _on_game_manager_game_started(_secret: int):
 	answer_input.grab_focus()
+
+func _on_game_manager_game_won():
+	prevent_input()

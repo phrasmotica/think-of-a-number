@@ -37,6 +37,7 @@ caret_blink = true
 [node name="SubmitButton" type="Button" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 0
 text = "Submit"
 
 [connection signal="text_submitted" from="MarginContainer/HBoxContainer/AnswerInput" to="." method="_on_answer_input_text_submitted"]
