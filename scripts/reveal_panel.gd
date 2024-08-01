@@ -1,3 +1,4 @@
+@tool
 extends PanelContainer
 
 @onready
@@ -6,24 +7,35 @@ var secret_label: SecretLabel = %SecretLabel
 @onready
 var play_again_button: Button = %PlayAgainButton
 
+@onready
+var animation_player: AnimationPlayer = %AnimationPlayer
+
 signal game_restarted
 
 func _ready():
+    secret_label.resized.connect(_on_secret_label_resized)
+
+    if not Engine.is_editor_hint():
+        start()
+
+func start():
     secret_label.conceal()
+    animation_player.play("label_wave")
 
     play_again_button.disabled = true
 
-func _on_game_manager_game_won():
+func finish():
     secret_label.reveal()
+    animation_player.play("RESET")
 
     play_again_button.disabled = false
     play_again_button.grab_focus()
+
+func _on_game_manager_game_won():
+    finish()
 
 func _on_game_manager_game_lost():
-    secret_label.reveal()
-
-    play_again_button.disabled = false
-    play_again_button.grab_focus()
+    finish()
 
 func _on_play_again_button_pressed():
     game_restarted.emit()
@@ -31,7 +43,9 @@ func _on_play_again_button_pressed():
 func _on_game_manager_game_started(secret: int):
     secret_label.secret_value = secret
 
-    secret_label.conceal()
+    start()
 
-    play_again_button.disabled = true
-    play_again_button.release_focus()
+func _on_secret_label_resized():
+    print("Centering secret label pivot")
+
+    secret_label.pivot_offset = secret_label.size / 2
