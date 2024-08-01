@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://mk230kyxlcmn"]
+[gd_scene load_steps=4 format=3 uid="uid://mk230kyxlcmn"]
 
 [ext_resource type="Theme" uid="uid://skah0wjpgann" path="res://theme_default.tres" id="1_crxy0"]
 [ext_resource type="Script" path="res://scripts/reveal_panel.gd" id="2_2r51q"]
+[ext_resource type="PackedScene" uid="uid://dtlvywg5qfge5" path="res://scenes/secret_label.tscn" id="3_aihyx"]
 
 [node name="RevealPanel" type="PanelContainer"]
 custom_minimum_size = Vector2(300, 300)
@@ -22,11 +23,9 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SecretLabel" type="Label" parent="MarginContainer/VBoxContainer/CenterContainer"]
+[node name="SecretLabel" parent="MarginContainer/VBoxContainer/CenterContainer" instance=ExtResource("3_aihyx")]
 unique_name_in_owner = true
 layout_mode = 2
-theme_type_variation = &"RevealLabel"
-text = "85"
 
 [node name="PlayAgainButton" type="Button" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
