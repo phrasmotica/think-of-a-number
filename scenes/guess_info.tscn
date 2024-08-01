@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj5hn0gd30dns"]
+
+[ext_resource type="Script" path="res://scripts/guess_info.gd" id="1_7b8yh"]
+[ext_resource type="Theme" uid="uid://skah0wjpgann" path="res://theme_default.tres" id="1_jacr7"]
+
+[node name="GuessInfo" type="HBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+theme = ExtResource("1_jacr7")
+script = ExtResource("1_7b8yh")
+guess_value = 70
+
+[node name="Value" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "70"
+
+[node name="Relative" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+text = ">"
