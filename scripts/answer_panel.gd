@@ -61,3 +61,6 @@ func _on_game_manager_game_started(_secret: int):
 
 func _on_game_manager_game_won():
 	prevent_input()
+
+func _on_game_manager_game_lost():
+	prevent_input()

@@ -19,6 +19,12 @@ func _on_game_manager_game_won():
     play_again_button.disabled = false
     play_again_button.grab_focus()
 
+func _on_game_manager_game_lost():
+    secret_label.reveal()
+
+    play_again_button.disabled = false
+    play_again_button.grab_focus()
+
 func _on_play_again_button_pressed():
     game_restarted.emit()
 
