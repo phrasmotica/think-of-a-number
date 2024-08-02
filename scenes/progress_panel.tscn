@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://nir80wbam710"]
+[gd_scene load_steps=4 format=3 uid="uid://nir80wbam710"]
 
 [ext_resource type="Theme" uid="uid://skah0wjpgann" path="res://theme_default.tres" id="1_5nf0g"]
 [ext_resource type="Script" path="res://scripts/progress_panel.gd" id="2_xxs37"]
+[ext_resource type="PackedScene" uid="uid://cj5hn0gd30dns" path="res://scenes/guess_info.tscn" id="3_al0h6"]
 
 [node name="ProgressPanel" type="PanelContainer"]
 custom_minimum_size = Vector2(200, 200)
 theme = ExtResource("1_5nf0g")
 script = ExtResource("2_xxs37")
+guess_info_scene = ExtResource("3_al0h6")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -30,14 +32,14 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/GuessesContainer"]
+[node name="GuessInfo" parent="MarginContainer/VBoxContainer/GuessesContainer" instance=ExtResource("3_al0h6")]
 layout_mode = 2
-text = "0"
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/GuessesContainer"]
+[node name="GuessInfo2" parent="MarginContainer/VBoxContainer/GuessesContainer" instance=ExtResource("3_al0h6")]
 layout_mode = 2
-text = "1"
+guess_value = 30
+relative = 2
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/GuessesContainer"]
+[node name="GuessInfo3" parent="MarginContainer/VBoxContainer/GuessesContainer" instance=ExtResource("3_al0h6")]
 layout_mode = 2
-text = "2"
+guess_value = 50

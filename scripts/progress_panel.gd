@@ -1,5 +1,8 @@
 extends PanelContainer
 
+@export
+var guess_info_scene: PackedScene
+
 @onready
 var guesses_container: VBoxContainer = %GuessesContainer
 
@@ -11,20 +14,19 @@ func clear_guesses():
         c.queue_free()
 
 func _on_game_manager_accept_guess(guess: int, secret: int):
-    var label := create_label(guess, secret)
+    var guess_info := create_guess_info(guess, secret)
 
-    guesses_container.add_child(label)
+    guesses_container.add_child(guess_info)
 
-func create_label(guess: int, secret: int) -> Label:
-    var label := Label.new()
-    label.text = str(guess)
+func create_guess_info(guess: int, secret: int) -> GuessInfo:
+    var guess_info: GuessInfo = guess_info_scene.instantiate()
 
-    if guess < secret:
-        label.text += " (too low)"
-    elif guess > secret:
-        label.text += " (too high)"
+    guess_info.ready.connect(
+        func():
+            guess_info.set_guess(guess, secret)
+    )
 
-    return label
+    return guess_info
 
 func _on_reveal_panel_game_restarted():
     clear_guesses()
