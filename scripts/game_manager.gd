@@ -13,11 +13,11 @@ signal game_won
 signal game_lost
 
 func _ready():
-    guesses_left = max_guesses
-
     generate_secret()
 
 func generate_secret():
+    guesses_left = max_guesses
+
     secret_number = randi_range(1, 100)
 
     print("The secret number is " + str(secret_number))
