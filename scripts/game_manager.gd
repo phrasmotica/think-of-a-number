@@ -7,6 +7,9 @@ var secret_number: int
 var guesses_left: int
 
 signal game_started(secret: int)
+
+signal guessed_low
+signal guessed_high
 signal accept_guess(guess: int, secret: int)
 
 signal game_won
@@ -27,18 +30,24 @@ func generate_secret():
 func submit_guess(guess: int):
     guesses_left -= 1
 
+    accept_guess.emit(guess, secret_number)
+
     if guess == secret_number:
         print("You win!")
-
         game_won.emit()
-    elif guesses_left > 0:
-        print("Try again.")
-    else:
+        return
+
+    if guesses_left <= 0:
         print("You lose!")
-
         game_lost.emit()
+        return
 
-    accept_guess.emit(guess, secret_number)
+    print("Try again.")
+
+    if guess < secret_number:
+        guessed_low.emit()
+    else:
+        guessed_high.emit()
 
 func _on_answer_panel_submit_answer(guess: int):
     submit_guess(guess)
