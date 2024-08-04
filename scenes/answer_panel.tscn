@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://scripts/answer_panel.gd" id="2_ugrbf"]
 
 [node name="AnswerPanel" type="PanelContainer"]
-custom_minimum_size = Vector2(400, 80)
+custom_minimum_size = Vector2(400, 0)
 offset_right = 400.0
-offset_bottom = 80.0
+offset_bottom = 78.0
 theme = ExtResource("1_hj04u")
 script = ExtResource("2_ugrbf")
 
@@ -38,9 +38,10 @@ caret_blink_interval = 0.5
 
 [node name="SubmitButton" type="Button" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
+custom_minimum_size = Vector2(100, 50)
 layout_mode = 2
 focus_mode = 0
+mouse_default_cursor_shape = 2
 text = "Submit"
 
 [connection signal="text_submitted" from="MarginContainer/HBoxContainer/AnswerInput" to="." method="_on_answer_input_text_submitted"]
