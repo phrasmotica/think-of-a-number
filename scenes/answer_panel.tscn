@@ -4,17 +4,18 @@
 [ext_resource type="Script" path="res://scripts/answer_panel.gd" id="2_ugrbf"]
 
 [node name="AnswerPanel" type="PanelContainer"]
-custom_minimum_size = Vector2(600, 0)
-offset_right = 600.0
+custom_minimum_size = Vector2(400, 80)
+offset_right = 400.0
+offset_bottom = 80.0
 theme = ExtResource("1_hj04u")
 script = ExtResource("2_ugrbf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -33,9 +34,11 @@ virtual_keyboard_type = 2
 selecting_enabled = false
 drag_and_drop_selection_enabled = false
 caret_blink = true
+caret_blink_interval = 0.5
 
 [node name="SubmitButton" type="Button" parent="MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 focus_mode = 0
 text = "Submit"

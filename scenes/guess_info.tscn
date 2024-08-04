@@ -7,8 +7,6 @@
 custom_minimum_size = Vector2(120, 0)
 theme = ExtResource("1_jacr7")
 script = ExtResource("1_7b8yh")
-guess_value = 70
-relative = 1
 
 [node name="Value" type="Label" parent="."]
 unique_name_in_owner = true
