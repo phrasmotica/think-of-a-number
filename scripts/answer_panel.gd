@@ -57,6 +57,7 @@ func _on_game_manager_accept_guess(_guess: int, _secret: int):
 	answer_input.text = ""
 
 func _on_game_manager_game_started(_secret: int):
+	answer_input.mouse_filter = Control.MOUSE_FILTER_STOP
 	answer_input.grab_focus()
 
 func _on_game_manager_game_won():

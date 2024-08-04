@@ -32,3 +32,7 @@ func _on_game_manager_game_won():
 
     if music_player.finished.is_connected(set_main):
         music_player.finished.disconnect(set_main)
+
+func _on_reveal_panel_game_restarted():
+    music_player.stream = main_audio
+    music_player.play()

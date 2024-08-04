@@ -84,5 +84,6 @@ layout_mode = 2
 [connection signal="game_won" from="GameManager" to="GameManager/CanvasLayer/CenterContainer3/RevealPanel" method="_on_game_manager_game_won"]
 [connection signal="guessed_high" from="GameManager" to="MusicManager" method="_on_game_manager_guessed_high"]
 [connection signal="submit_answer" from="GameManager/CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" to="GameManager" method="_on_answer_panel_submit_answer"]
+[connection signal="game_restarted" from="GameManager/CanvasLayer/CenterContainer3/RevealPanel" to="MusicManager" method="_on_reveal_panel_game_restarted"]
 [connection signal="game_restarted" from="GameManager/CanvasLayer/CenterContainer3/RevealPanel" to="GameManager" method="_on_reveal_panel_game_restarted"]
 [connection signal="game_restarted" from="GameManager/CanvasLayer/CenterContainer3/RevealPanel" to="GameManager/CanvasLayer/CenterContainer2/MarginContainer/ProgressPanel" method="_on_reveal_panel_game_restarted"]
