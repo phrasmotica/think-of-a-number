@@ -1,4 +1,28 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://skah0wjpgann"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://skah0wjpgann"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k2tm1"]
+bg_color = Color(0.65098, 0.65098, 0.65098, 0.498039)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2iq80"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pj2a5"]
 bg_color = Color(0.7833, 0.487455, 0.68921, 1)
@@ -18,8 +42,15 @@ font_names = PackedStringArray("Bahnschrift")
 default_font = SubResource("SystemFont_1jovo")
 Button/font_sizes/font_size = 24
 LineEdit/font_sizes/font_size = 24
+MainMenuButton/base_type = &"Button"
+MainMenuButton/colors/font_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_hover_color = Color(0, 0, 0, 1)
+MainMenuButton/font_sizes/font_size = 48
+MainMenuButton/styles/hover = SubResource("StyleBoxFlat_k2tm1")
+MainMenuButton/styles/normal = SubResource("StyleBoxFlat_2iq80")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_pj2a5")
 RevealLabel/base_type = &"Label"
 RevealLabel/font_sizes/font_size = 92
 TitleLabel/base_type = &"Label"
+TitleLabel/colors/font_color = Color(0, 0, 0, 1)
 TitleLabel/font_sizes/font_size = 72
