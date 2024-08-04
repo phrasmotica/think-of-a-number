@@ -25,6 +25,9 @@ func start():
     play_again_button.disabled = true
 
 func finish():
+    animation_player.play("label_wave_end")
+
+func reveal():
     secret_label.reveal()
     animation_player.play("RESET")
 
