@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bf1jcgnoh4v45"]
+[gd_scene load_steps=10 format=3 uid="uid://bf1jcgnoh4v45"]
 
 [ext_resource type="PackedScene" uid="uid://m5dffj8my3kp" path="res://scenes/game_manager.tscn" id="1_0tytt"]
 [ext_resource type="PackedScene" uid="uid://brbqmr3nmh6ej" path="res://scenes/music_manager.tscn" id="1_707ni"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://nir80wbam710" path="res://scenes/progress_panel.tscn" id="3_ewt4v"]
 [ext_resource type="AudioStream" uid="uid://dtgkc7pmmtycf" path="res://assets/music/tgr-go-under-x2.mp3" id="4_0piip"]
 [ext_resource type="PackedScene" uid="uid://mk230kyxlcmn" path="res://scenes/reveal_panel.tscn" id="4_tv6jw"]
+[ext_resource type="AudioStream" uid="uid://jb05juexjh55" path="res://assets/music/tgr-yeah.mp3" id="5_a6ccf"]
 
 [node name="Game" type="Node2D"]
 
@@ -15,6 +16,7 @@
 script = ExtResource("2_qdryc")
 main_audio = ExtResource("1_ssdal")
 high_guess_audio = ExtResource("4_0piip")
+win_audio = ExtResource("5_a6ccf")
 
 [node name="Music" type="AudioStreamPlayer" parent="MusicManager"]
 unique_name_in_owner = true
@@ -70,6 +72,7 @@ layout_mode = 2
 [connection signal="game_lost" from="GameManager" to="GameManager/CanvasLayer/CenterContainer3/RevealPanel" method="_on_game_manager_game_lost"]
 [connection signal="game_started" from="GameManager" to="GameManager/CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" method="_on_game_manager_game_started"]
 [connection signal="game_started" from="GameManager" to="GameManager/CanvasLayer/CenterContainer3/RevealPanel" method="_on_game_manager_game_started"]
+[connection signal="game_won" from="GameManager" to="MusicManager" method="_on_game_manager_game_won"]
 [connection signal="game_won" from="GameManager" to="GameManager/CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" method="_on_game_manager_game_won"]
 [connection signal="game_won" from="GameManager" to="GameManager/CanvasLayer/CenterContainer3/RevealPanel" method="_on_game_manager_game_won"]
 [connection signal="guessed_high" from="GameManager" to="MusicManager" method="_on_game_manager_guessed_high"]
