@@ -75,6 +75,7 @@ layout_mode = 2
 
 [connection signal="accept_guess" from="GameManager" to="GameManager/CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" method="_on_game_manager_accept_guess"]
 [connection signal="accept_guess" from="GameManager" to="GameManager/CanvasLayer/CenterContainer2/MarginContainer/ProgressPanel" method="_on_game_manager_accept_guess"]
+[connection signal="game_lost" from="GameManager" to="MusicManager" method="_on_game_manager_game_lost"]
 [connection signal="game_lost" from="GameManager" to="GameManager/CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" method="_on_game_manager_game_lost"]
 [connection signal="game_lost" from="GameManager" to="GameManager/CanvasLayer/CenterContainer3/RevealPanel" method="_on_game_manager_game_lost"]
 [connection signal="game_started" from="GameManager" to="GameManager/CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" method="_on_game_manager_game_started"]
