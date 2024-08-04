@@ -1,14 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf1jcgnoh4v45"]
+[gd_scene load_steps=8 format=3 uid="uid://bf1jcgnoh4v45"]
 
 [ext_resource type="PackedScene" uid="uid://m5dffj8my3kp" path="res://scenes/game_manager.tscn" id="1_0tytt"]
+[ext_resource type="PackedScene" uid="uid://brbqmr3nmh6ej" path="res://scenes/music_manager.tscn" id="1_707ni"]
 [ext_resource type="PackedScene" uid="uid://gksavxrlke4t" path="res://scenes/answer_panel.tscn" id="1_jftse"]
 [ext_resource type="AudioStream" uid="uid://b748btwb01cco" path="res://assets/music/tgr-think-of-a-number-2.mp3" id="1_ssdal"]
+[ext_resource type="Script" path="res://scripts/music_manager.gd" id="2_qdryc"]
 [ext_resource type="PackedScene" uid="uid://nir80wbam710" path="res://scenes/progress_panel.tscn" id="3_ewt4v"]
 [ext_resource type="PackedScene" uid="uid://mk230kyxlcmn" path="res://scenes/reveal_panel.tscn" id="4_tv6jw"]
 
 [node name="Game" type="Node2D"]
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MusicManager" parent="." instance=ExtResource("1_707ni")]
+script = ExtResource("2_qdryc")
+main_audio = ExtResource("1_ssdal")
+
+[node name="Music" type="AudioStreamPlayer" parent="MusicManager"]
+unique_name_in_owner = true
 stream = ExtResource("1_ssdal")
 autoplay = true
 
