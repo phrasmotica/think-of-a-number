@@ -1,0 +1,44 @@
+[gd_scene load_steps=9 format=3 uid="uid://7yirceufbvvg"]
+
+[ext_resource type="Texture2D" uid="uid://dsrksvhuwfpv" path="res://assets/sprites/arrow_down.png" id="1_pit77"]
+[ext_resource type="Script" path="res://scripts/arrow_particles.gd" id="2_oqtfp"]
+[ext_resource type="Texture2D" uid="uid://vgpfolt82thh" path="res://assets/sprites/arrow_up.png" id="3_qo7pe"]
+
+[sub_resource type="Curve" id="Curve_2qckp"]
+_data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(0.0619835, 1), 0.0, 0.0, 0, 0, Vector2(0.657025, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_i0nab"]
+curve = SubResource("Curve_2qckp")
+
+[sub_resource type="Curve" id="Curve_v4kij"]
+_data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(0.0619835, 1), 0.0, 0.0, 0, 0, Vector2(0.657025, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ch6s6"]
+curve = SubResource("Curve_v4kij")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u5v2v"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(576, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_ch6s6")
+alpha_curve = SubResource("CurveTexture_i0nab")
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+
+[node name="ArrowParticles" type="GPUParticles2D"]
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_u5v2v")
+texture = ExtResource("1_pit77")
+lifetime = 3.0
+script = ExtResource("2_oqtfp")
+down_texture = ExtResource("1_pit77")
+up_texture = ExtResource("3_qo7pe")
