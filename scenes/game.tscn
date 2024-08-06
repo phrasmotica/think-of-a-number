@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bf1jcgnoh4v45"]
+[gd_scene load_steps=22 format=3 uid="uid://bf1jcgnoh4v45"]
 
 [ext_resource type="PackedScene" uid="uid://m5dffj8my3kp" path="res://scenes/game_manager.tscn" id="1_0tytt"]
 [ext_resource type="PackedScene" uid="uid://brbqmr3nmh6ej" path="res://scenes/music_manager.tscn" id="1_707ni"]
@@ -9,6 +9,66 @@
 [ext_resource type="AudioStream" uid="uid://dtgkc7pmmtycf" path="res://assets/music/tgr-go-under-x2.mp3" id="4_0piip"]
 [ext_resource type="PackedScene" uid="uid://mk230kyxlcmn" path="res://scenes/reveal_panel.tscn" id="4_tv6jw"]
 [ext_resource type="AudioStream" uid="uid://jb05juexjh55" path="res://assets/music/tgr-yeah.mp3" id="5_a6ccf"]
+[ext_resource type="PackedScene" uid="uid://7yirceufbvvg" path="res://scenes/arrow_particles.tscn" id="7_ymsgc"]
+[ext_resource type="Texture2D" uid="uid://vgpfolt82thh" path="res://assets/sprites/arrow_up.png" id="8_v3wp7"]
+
+[sub_resource type="Curve" id="Curve_26di3"]
+_data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(0.0619835, 1), 0.0, 0.0, 0, 0, Vector2(0.657025, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7sgaq"]
+curve = SubResource("Curve_26di3")
+
+[sub_resource type="Curve" id="Curve_ld4rl"]
+_data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(0.0619835, 1), 0.0, 0.0, 0, 0, Vector2(0.657025, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ij2vr"]
+curve = SubResource("Curve_ld4rl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nba03"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(576, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_ij2vr")
+alpha_curve = SubResource("CurveTexture_7sgaq")
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+
+[sub_resource type="Curve" id="Curve_7sxii"]
+_data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(0.0619835, 1), 0.0, 0.0, 0, 0, Vector2(0.657025, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_32s82"]
+curve = SubResource("Curve_7sxii")
+
+[sub_resource type="Curve" id="Curve_mrpar"]
+_data = [Vector2(0, 0.505494), 0.0, 0.0, 0, 0, Vector2(0.0619835, 1), 0.0, 0.0, 0, 0, Vector2(0.657025, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_3fsy4"]
+curve = SubResource("Curve_mrpar")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pxsv4"]
+lifetime_randomness = 0.3
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(576, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_3fsy4")
+alpha_curve = SubResource("CurveTexture_32s82")
+hue_variation_min = -0.1
+hue_variation_max = 0.1
 
 [node name="Game" type="Node2D"]
 
@@ -33,6 +93,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="DownArrowParticles" parent="GameManager/CanvasLayer" instance=ExtResource("7_ymsgc")]
+position = Vector2(576, -50)
+process_material = SubResource("ParticleProcessMaterial_nba03")
+
+[node name="UpArrowParticles" parent="GameManager/CanvasLayer" instance=ExtResource("7_ymsgc")]
+position = Vector2(576, 698)
+process_material = SubResource("ParticleProcessMaterial_pxsv4")
+texture = ExtResource("8_v3wp7")
+direction = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="GameManager/CanvasLayer"]
 anchors_preset = 2
@@ -84,6 +154,8 @@ layout_mode = 2
 [connection signal="game_won" from="GameManager" to="GameManager/CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" method="_on_game_manager_game_won"]
 [connection signal="game_won" from="GameManager" to="GameManager/CanvasLayer/CenterContainer3/RevealPanel" method="_on_game_manager_game_won"]
 [connection signal="guessed_high" from="GameManager" to="MusicManager" method="_on_game_manager_guessed_high"]
+[connection signal="guessed_high" from="GameManager" to="GameManager/CanvasLayer/DownArrowParticles" method="_on_game_manager_guessed_high"]
+[connection signal="guessed_low" from="GameManager" to="GameManager/CanvasLayer/UpArrowParticles" method="_on_game_manager_guessed_low"]
 [connection signal="submit_answer" from="GameManager/CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" to="GameManager" method="_on_answer_panel_submit_answer"]
 [connection signal="game_restarted" from="GameManager/CanvasLayer/CenterContainer3/RevealPanel" to="MusicManager" method="_on_reveal_panel_game_restarted"]
 [connection signal="game_restarted" from="GameManager/CanvasLayer/CenterContainer3/RevealPanel" to="GameManager" method="_on_reveal_panel_game_restarted"]
