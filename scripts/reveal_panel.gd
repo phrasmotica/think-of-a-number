@@ -32,7 +32,6 @@ func reveal():
     animation_player.play("RESET")
 
     play_again_button.disabled = false
-    play_again_button.grab_focus()
 
 func _on_game_manager_game_won():
     finish()

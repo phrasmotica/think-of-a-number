@@ -24,7 +24,8 @@ func _on_game_manager_guessed_high():
     music_player.stream = high_guess_audio
     music_player.play()
 
-    music_player.finished.connect(set_main)
+    if not music_player.finished.is_connected(set_main):
+        music_player.finished.connect(set_main)
 
 func _on_game_manager_game_won():
     music_player.stream = win_audio
