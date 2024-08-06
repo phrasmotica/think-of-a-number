@@ -1,6 +1,9 @@
 @tool
 extends PanelContainer
 
+@export
+var tick_particles: GPUParticles2D
+
 @onready
 var secret_label: SecretLabel = %SecretLabel
 
@@ -32,6 +35,13 @@ func reveal():
     animation_player.play("RESET")
 
     play_again_button.disabled = false
+
+    tick_particles.emitting = true
+
+    get_tree().create_timer(1).timeout.connect(
+        func():
+            tick_particles.emitting = false
+    )
 
 func _on_game_manager_game_won():
     finish()
