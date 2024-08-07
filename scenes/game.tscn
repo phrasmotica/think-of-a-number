@@ -183,6 +183,7 @@ grow_vertical = 2
 
 [node name="RevealPanel" parent="GameManager/CanvasLayer/CenterContainer3" node_paths=PackedStringArray("tick_particles") instance=ExtResource("4_tv6jw")]
 layout_mode = 2
+enable_particles = false
 tick_particles = NodePath("../../TickParticles")
 
 [connection signal="accept_guess" from="GameManager" to="GameManager/CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" method="_on_game_manager_accept_guess"]
@@ -196,8 +197,8 @@ tick_particles = NodePath("../../TickParticles")
 [connection signal="game_won" from="GameManager" to="GameManager/CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" method="_on_game_manager_game_won"]
 [connection signal="game_won" from="GameManager" to="GameManager/CanvasLayer/CenterContainer3/RevealPanel" method="_on_game_manager_game_won"]
 [connection signal="guessed_high" from="GameManager" to="MusicManager" method="_on_game_manager_guessed_high"]
-[connection signal="guessed_high" from="GameManager" to="GameManager/CanvasLayer/DownArrowParticles" method="_on_game_manager_guessed_high"]
-[connection signal="guessed_low" from="GameManager" to="GameManager/CanvasLayer/UpArrowParticles" method="_on_game_manager_guessed_low"]
+[connection signal="guessed_high" from="GameManager" to="GameManager/CanvasLayer/CenterContainer3/RevealPanel" method="_on_game_manager_guessed_high"]
+[connection signal="guessed_low" from="GameManager" to="GameManager/CanvasLayer/CenterContainer3/RevealPanel" method="_on_game_manager_guessed_low"]
 [connection signal="submit_answer" from="GameManager/CanvasLayer/CenterContainer/MarginContainer/AnswerPanel" to="GameManager" method="_on_answer_panel_submit_answer"]
 [connection signal="game_restarted" from="GameManager/CanvasLayer/CenterContainer3/RevealPanel" to="MusicManager" method="_on_reveal_panel_game_restarted"]
 [connection signal="game_restarted" from="GameManager/CanvasLayer/CenterContainer3/RevealPanel" to="GameManager" method="_on_reveal_panel_game_restarted"]

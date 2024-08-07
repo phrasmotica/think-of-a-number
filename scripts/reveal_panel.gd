@@ -2,6 +2,15 @@
 extends PanelContainer
 
 @export
+var enable_particles := true
+
+@export
+var up_arrow_particles: ArrowParticles
+
+@export
+var down_arrow_particles: ArrowParticles
+
+@export
 var tick_particles: GPUParticles2D
 
 @onready
@@ -36,12 +45,13 @@ func reveal():
 
     play_again_button.disabled = false
 
-    tick_particles.emitting = true
+    if enable_particles:
+        tick_particles.emitting = true
 
-    get_tree().create_timer(1).timeout.connect(
-        func():
-            tick_particles.emitting = false
-    )
+        get_tree().create_timer(1).timeout.connect(
+            func():
+                tick_particles.emitting = false
+        )
 
 func _on_game_manager_game_won():
     finish()
@@ -61,3 +71,11 @@ func _on_secret_label_resized():
     print("Centering secret label pivot")
 
     secret_label.pivot_offset = secret_label.size / 2
+
+func _on_game_manager_guessed_high():
+    if enable_particles:
+        up_arrow_particles.release()
+
+func _on_game_manager_guessed_low():
+    if enable_particles:
+        down_arrow_particles.release()

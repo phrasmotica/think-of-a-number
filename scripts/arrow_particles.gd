@@ -1,5 +1,5 @@
 @tool
-extends GPUParticles2D
+class_name ArrowParticles extends GPUParticles2D
 
 enum ArrowDirection { DOWN, UP, }
 
@@ -30,9 +30,3 @@ func release():
 		func():
 			emitting = false
 	)
-
-func _on_game_manager_guessed_high():
-	release()
-
-func _on_game_manager_guessed_low():
-	release()
