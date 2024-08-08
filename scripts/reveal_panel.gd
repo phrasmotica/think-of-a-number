@@ -74,8 +74,8 @@ func _on_secret_label_resized():
 
 func _on_game_manager_guessed_high():
     if enable_particles:
-        up_arrow_particles.release()
+        down_arrow_particles.release()
 
 func _on_game_manager_guessed_low():
     if enable_particles:
-        down_arrow_particles.release()
+        up_arrow_particles.release()
