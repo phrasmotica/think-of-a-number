@@ -48,7 +48,7 @@ func reveal():
     if enable_particles:
         tick_particles.emitting = true
 
-        get_tree().create_timer(1).timeout.connect(
+        get_tree().create_timer(0.1).timeout.connect(
             func():
                 tick_particles.emitting = false
         )
